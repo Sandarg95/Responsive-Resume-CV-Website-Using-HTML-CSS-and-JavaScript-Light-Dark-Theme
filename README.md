@@ -10,7 +10,7 @@ This project is a responsive and interactive resume website designed to showcase
 * [Contacts](Contacts)
 
 # Demo
-You can view the live version of the website here: https://danielsantanaresume.s3.us-east-2.amazonaws.com/Daniel+Santana+-+CV/index.html
+You can view the live version of the website here: https://danielsantanaresume.s3.us-east-2.amazonaws.com/Daniel+Santana+-+CV/main.html
 
 # Features
 * **Responsive Design**: Optimized for both desktop and mobile viewing.
