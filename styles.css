@@ -1,0 +1,788 @@
+/*===== GOOGLE FONTS =====*/
+/* Importing Google Fonts for use in the webpage */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/*===== VARIABLES CSS =====*/
+/* Defining CSS variables for consistent design and easy theme management */
+:root {
+  --header-height: 3rem;
+  
+  /*========== Colors ==========*/
+  --title-color: #0B0A0A;
+  --text-color: #403A3A;
+  --text-color-light: #707070;
+  --container-color: #FAFAFA;
+  --container-color-alt: #F0EFEF;
+  --body-color: #FCFCFC;
+
+  /*========== Font and typography ==========*/
+  --body-font: 'Poppins', sans-serif;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1rem;
+  --normal-font-size: .938rem;
+  --small-font-size: .875rem;
+  --smaller-font-size: .813rem;
+
+  /*========== Font weight ==========*/
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  /*========== Margins ==========*/
+  --mb-1: .5rem;
+  --mb-2: 1rem;
+  --mb-3: 1.5rem;
+
+  /*========== z-index levels ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+/*========== BASE ==========*/
+/* Applying basic styles to all elements, before and after pseudo-elements */
+*,::before,::after{
+  box-sizing: border-box;
+}
+
+/* Ensures smooth scrolling behavior for anchor links */
+html{
+  scroll-behavior: smooth;
+}
+
+/*========== Variables for Dark theme ==========*/
+/* Defining the colors for the dark theme when applied to the body */
+body.dark-theme{
+  --title-color: #f2f2f2;
+  --text-color: #bfbfbf;
+  --container-color: #212121;
+  --container-color-alt: #181616;
+  --body-color: #2b2b2b;
+  
+}
+
+/*========== Button for Dark/Light Theme Toggle ==========*/
+/* Styling for the theme change button, positioned at the top right */
+.change-theme{
+  position: absolute;
+  right: 0;
+  top: 2.2rem;
+  display: flex;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* Hover effect to change color on the theme button */
+.change-theme:hover{
+  color: var(--title-color);
+}
+
+/*========== BASE STYLES ==========*/
+/* Base styles for the body, setting margin, padding, font, and colors */
+body{
+  margin: 0 0 var(--header-height) 0;
+  padding: 0;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+}
+
+/* Resetting margins for headings, paragraphs, lists */
+h1,h2,h3,ul,p{
+  margin: 0;
+}
+
+/* Styling for headings, applying color and font weight */
+h1,h2,h3{
+  color: var(--title-color);
+  font-weight: var(--font-medium);
+}
+
+/* Removing padding and list styles for unordered lists */
+ul{
+  padding: 0;
+  list-style: none;
+}
+
+/* Removing underline from links */
+a{
+  text-decoration: none;
+}
+
+/* Ensuring images are responsive */
+img{
+  max-width: 100%;
+  height: auto;
+}
+
+
+/*========== CLASS CSS ==========*/
+/* Base section styling, applying padding */
+.section{
+  padding: .85rem 0;
+}
+
+/* Styling for section titles, applying font size, color, and spacing */
+.section-title{
+  font-size: var(--h2-font-size);
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+  text-transform: uppercase;
+  letter-spacing: .35rem;
+  text-align: center; 
+  margin-bottom: var(--mb-3);
+}
+
+/*========== LAYOUT ==========*/
+/* Base container styling, setting max width and padding */
+.bd-container{
+  max-width: 968px;
+  width: calc(100% - 3rem);
+  margin-left: var(--mb-3);
+  margin-right: var(--mb-3);
+}
+
+/* Grid display for layout */
+.bd-grid{
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* Header styling, fixed at the bottom with shadow */
+.l-header{
+  width: 100%;
+  position: fixed;
+  bottom: 0em;
+  left: 0;
+  z-index: var(--z-fixed);
+  background-color: var(--body-color);
+  box-shadow: 0 -1px 4px rgba(93, 8, 189, 0.1);
+  transition: .3s;
+}
+
+/*========== NAV ==========*/
+/* Navigation styling, aligning items and justifying space between */
+.nav{
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Responsive styling for smaller screens */
+@media screen and (max-width:968px){
+
+  /* Mobile navigation menu styling */
+  .nav__menu{
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    z-index: var(--z-fixed);
+    padding: 2rem 1.5rem;
+    padding-bottom: 0em;
+    background-color: var(--body-color);
+    box-shadow: 0 1px 4px rgba(93, 8, 189, 0.1);
+    border-radius: 1rem 1rem 0 0 ;
+    transition: .3s;
+  }
+}
+
+/* Adjust padding for the navigation menu on larger screens */
+@media screen and (min-width:968px){
+  .nav__menu{
+    padding-bottom: 6em;
+  }
+}
+
+/* Navigation logo and toggle button styling */
+.nav__logo,
+.nav__toggle{
+  color: var(--title-color);
+  font-weight: var(--font-medium);
+}
+
+/* Navigation toggle button styling */
+.nav__toggle{
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Centering navigation items */
+.nav__item{
+  text-align: center;
+}
+
+/* Navigation list styling, grid layout for items */
+.nav__list{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) ;
+  gap: 1em;
+}
+
+/* Navigation link styling */
+.nav__link{
+  display: flex;
+  flex-direction: column;
+  font-size: var(--smaller-font-size);
+  color: var(--text-color-light);
+  font-weight: var(--font-medium);
+}
+
+/* Styling for the project navigation link */
+.project-nav__link{
+  color: green;
+}
+
+/* Hover effect for navigation links */
+.nav__link:hover{
+  color: var(--title-color)
+}
+
+/* Show menu styling for mobile navigation */
+.show-menu{
+  bottom: var(--header-height);
+}
+
+/* Active menu link styling */
+
+/*========== HOME ==========*/
+/* Home section positioning */
+.home{
+  position: relative;
+}
+
+/* Container styling within the home section */
+.home__container{
+  gap: 3rem;
+  padding-bottom: 2rem;
+}
+
+/* Home section data styling */
+.home__data{
+  gap: 0.5em;
+  text-align: center;
+}
+
+/* Profile image styling in the home section */
+.home__img{
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  justify-self: center;
+  margin-bottom: var(--mb-1);
+}
+
+/* Title styling in the home section */
+.home__title{
+  font-size: var(--h1-font-size);
+}
+
+/* Profession title styling in the home section */
+.home__profession{
+  font-size: var(--normal-font-size);
+  margin-bottom: var(--mb-1);
+}
+
+/* Address information styling in the home section */
+.home__adress{
+  gap: 1rem;
+}
+
+/* Styling for information in the home section */
+.home__information{
+  display: flex;
+  align-items: center;
+  font-size: var(--small-font-size);
+}
+
+/* Icon styling in the home section */
+.home__icon{
+  font-size: 1.2rem;
+  margin-right: .25rem;
+}
+
+/* Button styling for mobile download in the home section */
+.home__button-mobil{
+  display: inline-block;
+  border: 2px solid var(--text-color);
+  color: var(--title-color);
+  padding: 1rem 2rem;
+  border-radius: .25rem;
+  transition: .3s;
+  font-weight: var(--font-medium);
+  margin-top: var(--mb-2);
+}
+
+/* Hover effect for the mobile download button */
+.home__button-mobil:hover{
+  background-color: var(--text-color);
+  color: var(--container-color);
+}
+
+/*========== SOCIAL ==========*/
+/* Social links container styling */
+.social__container{
+  grid-template-columns: max-content;
+  gap: 1rem;
+  padding-bottom: 2rem;
+}
+
+/* Social link styling */
+.social__link{
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--small-font-size);
+  color: var(--text-color);
+}
+
+/* Hover effect for social links */
+.social__link:hover{
+  color: var(--title-color);
+}
+
+/* Icon styling for social links */
+.social__icon{
+  font-size: 1.2rem;
+  margin-right: .25rem;
+}
+
+/*========== PROFILE ==========*/
+/* Text alignment for profile description */
+.profile_description{
+  text-align: justify;
+}
+
+/*========== EDUCATION AND EXPERIENCE ==========*/
+
+/* Common padding for section titles, experience, and project titles */
+.section-title,
+.experience-title,
+.project__title{
+  padding-top: 2rem;
+}
+
+/* Flex layout for education and experience content */
+.education__content,
+.experience__content{
+  display: flex;
+}
+
+/* Time marker styling for education and experience sections */
+.education__time,
+.experience__time{
+  padding-right: 1rem;
+}
+
+/* Rounder styling for timeline markers in education and experience sections */
+.education__rounder,
+.experience__rounder{
+  position: relative;
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-color: var(--text-color-light);
+  border-radius: 50%;
+  margin-top: .25rem;
+}
+
+/* Line styling connecting timeline markers in education and experience sections */
+.education__line,
+.experience__line{
+  display: block;
+  width: 2px;
+  height: 110%;
+  background-color: var(--text-color-light);
+  transform: translate(7px, 0);
+}
+
+/* Data container styling for education and experience sections */
+.education__data,
+.experience__data{
+  gap: .5rem;
+}
+
+/* Title styling for education, experience, and project sections */
+.education__title,
+.experience__title,
+.project__title{
+  font-size: var(--h3-font-size);
+}
+
+/* Study and company name styling for education and experience sections */
+.education__studies,
+.experience__company{
+  font-size: var(--small-font-size);
+  color: var(--title-color);
+}
+
+/* Year styling for education section */
+.education__year{
+  font-size: var(--smaller-font-size);
+}
+
+/* Description styling for education, experience, and project sections */
+.education__description,
+.experience__description,
+.project__description{
+  font-size: var(--smaller-font-size);
+  color: var(--text-color-light);
+  text-align: justify;
+}
+
+/*========== SKILLS AND LANGUAGES ==========*/
+/* Grid layout for skills and languages content */
+.skills__content,
+.languages__content{
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+}
+
+/* List item styling for skills and languages */
+.skills__name,
+.languages__name{
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--mb-3);
+}
+
+/* Circle marker styling for skills and languages */
+.skills__circle,
+.languages__circle{
+  position: relative;
+  display: block;
+  width: 5px;
+  height: 5px;
+  background-color: var(--text-color);
+  border-radius: 50%;
+  margin-right: .75rem;
+}
+
+/*========== PROJECTS ==========*/
+/* Project title styling */
+.project__title{
+  font-size: var(--h3-font-size);
+  margin-bottom: var(--mb-1);
+  padding-top: 3em;
+}
+
+/* Project link styling */
+.project__link{
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--small-font-size);
+  color: green;
+  margin-left: 35%;
+}
+
+/* Hover effect for project links */
+.project__link:hover{
+  color: var(--title-color);
+}
+
+/* Project description styling */
+.project__description{
+  font-size: var(--smaller-font-size);
+  color: var(--text-color-light);
+  text-align: justify;
+}
+
+/*========== REFERENCES ==========*/
+/* Gap styling for references content */
+.references__content{
+  gap: .25rem;
+}
+
+/* Subtitle styling for references */
+.references__subtitle{
+  color: var(--text-color-light);
+}
+
+/* Subtitle and contact information styling for references */
+.references__subtitle,
+.references__contact{
+  font-size: var(--smaller-font-size);
+}
+
+/* Title styling for references */
+.references__title{
+  font-size: var(--h3-font-size);
+}
+
+/*========== INTERESTS ==========*/
+/* Grid layout for interests container */
+.interests__container{
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: var(--mb-2);
+}
+
+/* Interests content styling */
+.interests__content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Icon styling for interests */
+.interests__icon{
+  font-size: 1.5rem;
+  color: var(--text-color-light);
+  margin-bottom: .25rem;
+}
+
+/*========== SCROLL TOP BUTTON ==========*/
+/* Scroll top button styling, hidden by default */
+.scrolltop{
+  position: fixed;
+  right: 1rem;
+  bottom: -20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: .3rem;
+  background-color: var(--container-color-alt);
+  border-radius: .4em;
+  z-index: var(--z-tooltip);
+  transition: .4s; 
+  visibility: hidden; 
+}
+
+/* Icon styling for scroll top button */
+.scrolltop__icon{
+  font-size: 1.4rem;
+  color: var(--text-color);
+}
+
+/* Show scroll top button when it becomes visible */
+.show-scroll{
+  visibility: visible;
+  bottom: 5rem;
+}
+
+/*========== MEDIA QUERIES ==========*/
+/* Responsive design for small devices, adjusting navigation list layout */
+@media screen and (max-width:320px){
+  .nav__list{
+    grid-template-columns: repeat(2,1fr);
+    gap: 1rem .5rem;
+  }
+} 
+
+/* Responsive design for large screens, adjusting various layout elements */
+@media screen and (min-width:968px) {
+  body{
+    margin: 3rem 0;
+  }
+
+  .bd-container{
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Display flex for right side of resume */
+  .resume__right {
+    display: flex;
+    flex-direction: column; /* Align sections in a column */
+  }
+
+  /* Hide header and scroll top button on large screens */
+  .l-header,
+  .scrolltop{
+    display: none;
+  }
+
+  /* Slideshow animation */
+  @keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+  }
+  
+  /* Font size adjustments for slideshow elements */
+  .prev, .next, .text{
+    font-size: 11px;
+  }
+
+  /* Resume layout adjustments for large screens */
+  .resume{
+    display: grid;
+    grid-template-columns: .5fr 1fr;
+    background-color: var(--container-color);
+    box-shadow: 0 0 8px rgba(13,12,12,.15);
+  }
+
+  /* Background color adjustment for the left side of the resume */
+  .resume__left{
+    background-color: var(--container-color-alt);
+  }
+
+  /* Padding adjustments for resume sections */
+  .resume__left,
+  .resume__right{
+    padding: 0 1.5rem;
+  }
+
+  /* Text alignment adjustments for titles and descriptions */
+  .section-title,
+  .profile__description{
+    text-align: initial;
+  }
+
+  /* Gap adjustments for home section container */
+  .home__container{
+    gap: 1.5rem;
+  }
+
+  /* Hide mobile download button on large screens */
+  .home__button-movil{
+    display: none;
+  }
+
+  /* Grid layout adjustments for references section */
+  .references__container{
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  /* Grid layout adjustments for languages section */
+  .languages__content{
+    grid-template-columns: repeat(4,max-content);
+    column-gap: 3.5rem;
+  }
+
+  /* Grid layout adjustments for interests section */
+  .interests__container{
+    grid-template-columns: repeat(4,max-content);
+    column-gap: 3.5rem;
+  }
+}
+
+/*
+==========================================================================
+Slideshow
+==========================================================================
+*/
+
+/* Hide all slides by default */
+.mySlides {display: none}
+
+/* Ensure images maintain vertical alignment */
+img {vertical-align: middle;}
+
+/* Slideshow container styling */
+.slideshow-container {
+  max-width: 300px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons styling */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* Hover effect for next and previous buttons */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.5);
+}
+
+/* Caption text styling */
+.text {
+  color: var(--text-color);
+  font-size: 15px;
+  padding: 8px 12px;
+  padding-bottom: 5%;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) styling */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Dot indicators for slideshow navigation */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+/* Active dot and hover effect for dots */
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation for slides */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+/*========== POPUP STYLING ==========*/
+/* Basic styling for the popup, hidden by default */
+.popup {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4); /* Black background with opacity */
+}
+
+/* Styling for the content inside the popup */
+.popup-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 300px;
+  text-align: center;
+}
+
+/* Styling for the close button inside the popup */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* Hover effect for the close button */
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
