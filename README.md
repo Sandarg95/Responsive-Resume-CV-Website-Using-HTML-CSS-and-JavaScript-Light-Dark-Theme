@@ -29,7 +29,7 @@ git clone https://github.com/Sandarg95/Responsive-Resume-CV-Website-Using-HTML-C
 cd Responsive-Resume-CV-Website-Using-HTML-CSS-and-JavaScript-Light-Dark-Theme
 /
 
-* **Open index.html in your web browser.**
+* **Open main.html in your web browser.**
 
 # Usage
 This website can be used as a digital resume or CV to showcase your professional achievements and projects. You can modify the content to suit your own profile and use it to create your own resume website.
